@@ -1,13 +1,21 @@
 /* Main class */
 .navbar-wagon {
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-  background: white;
+
   transition: all 0.3s ease;
   display: flex;
   height: 70px;
   padding: 0px 30px;
   align-items: center;
   justify-content: space-between;
+}
+
+.navbar-wagon-home {
+  background-color: rgba(0,0,0,0.5);
+}
+
+.navbar-wagon-else {
+  background-color: white;
 }
 
 /* Optional class to fix the navbar on top */
@@ -39,11 +47,20 @@
 }
 
 /* Navbar standard link */
-.navbar-wagon-link {
+.navbar-wagon-link-home {
+  color: $gray-light;
+  font-size: 14px;
+}
+.navbar-wagon-link-home:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.navbar-wagon-link-else {
   color: #616668;
   font-size: 14px;
 }
-.navbar-wagon-link:hover {
+.navbar-wagon-link-else:hover {
   color: #da552f;
   text-decoration: none;
 }
