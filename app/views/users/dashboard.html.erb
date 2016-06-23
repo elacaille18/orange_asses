@@ -17,11 +17,30 @@
       <div class="col-sm-8">
         <div class="card" id="calendar">
           <h2 class="text-center">Calendar</h2>
-          <%= month_calendar do |date| %>
-            <%= date %>
+          <%= week_calendar number_of_weeks: 2, events: @meetings do |date, meetings| %>
+            <div class="date-square">
+              <a href="#" class="date-link" data-date_id="<%=date.jd%>">
+              </a>
+                <div class="number">
+                  <%= date.day%>
+                </div>
+                <% meetings.each do |meeting| %>
+                  <div class="meeting" style="color:green;">
+                    <%= meeting.name %>
+                  </div>
+                <% end %>
+            </div>
           <% end %>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<% content_for(:after_js) do %>
+<script>
+  $(document).ready(function(){
+    $(".today .number").addClass("badge badge-red");
+  });
+</script>
+<%end%>
