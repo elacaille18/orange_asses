@@ -17,6 +17,9 @@
       <div class="col-sm-8">
         <div class="card" id="calendar">
           <h2 class="text-center">Calendar</h2>
+          <%= month_calendar do |date| %>
+            <%= date %>
+          <% end %>
         </div>
       </div>
     </div>
