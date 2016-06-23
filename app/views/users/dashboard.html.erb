@@ -1,12 +1,19 @@
 <div class="wrapper-gray">
   <div class="container">
     <div class="row">
+      <div class="col-xs-12 text-right">
+        <%= link_to "Add a new meeting", new_meeting_path ,class:"btn btn-danger"%>
+      </div>
+    </div>
+    <div class="row">
       <div class="col-sm-4">
         <div class="card" id="user-corner">
           <h2 class="text-center">My corner</h2>
           <div class="user-corner-content">
             <div>
               <h3>My infos</h3>
+              <p>Coach</p>
+              <p>Hunter</p>
             </div>
             <div>
               <h3>My tests</h3>
@@ -17,8 +24,57 @@
       <div class="col-sm-8">
         <div class="card" id="calendar">
           <h2 class="text-center">Calendar</h2>
+          <%= week_calendar number_of_weeks: 2, events: @meetings do |date, meetings| %>
+            <div class="date-square">
+              <a href="#" class="date-link" data-toggle="modal" data-target="#modal_<%=date.jd%>">
+              </a>
+                <div class="number">
+                  <%= date.day%>
+                </div>
+                <% meetings.each do |meeting| %>
+                  <div class="meeting" style="color:green;">
+                    <%= meeting.name %>
+                  </div>
+                <% end %>
+            </div>
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="modal_<%=date.jd%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel"><%= date%></h4>
+                  </div>
+                  <div class="modal-body">
+                    <% if meetings.select { |meeting| meeting.start_time.to_date == date}.any?%>
+                      <% meetings.select { |meeting| meeting.start_time.to_date == date}.each do |meeting| %>
+                        <%= meeting.name %>
+                      <%end%>
+                    <%else%>
+                     <p>Nothing planned this day</p>
+                    <%end%>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          <% end %>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<% content_for(:after_js) do %>
+<script>
+  $(document).ready(function(){
+    $(".today .number").addClass("badge badge-red");
+  });
+</script>
+<%end%>

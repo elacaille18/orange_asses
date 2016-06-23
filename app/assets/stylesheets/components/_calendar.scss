@@ -1,0 +1,52 @@
+.simple-calendar .day {
+  background-color:white;
+}
+
+
+.simple-calendar td {
+    border: 1px solid $gray-lighter;
+}
+
+.simple-calendar .prev-month {
+  opacity: 0.5;
+  background: #CCCCCC;
+}
+
+.simple-calendar .next-month {
+  opacity: 0.5;
+  background: #CCCCCC;
+}
+
+.calendar-heading {
+  display: flex;
+  justify-content: space-around;
+  padding: 5px;
+  border: 1px solid $gray-lighter;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.simple-calendar .today {
+  background: none;
+}
+
+.date-square {
+  height:100%;
+  position: relative;
+}
+.date-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left:0;
+  right:0;
+  width: 100%;
+  z-index:2;
+  background: black;
+  opacity: 0;
+}
+
+.date-link:hover {
+  // opacity: 0.3;
+}
+
