@@ -1,0 +1,9 @@
+#user-corner, #calendar {
+  min-height: 80vh;
+}
+
+.user-corner-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
