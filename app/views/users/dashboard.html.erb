@@ -7,37 +7,32 @@
     </div>
     <div class="row">
       <div class="col-sm-4">
-        <div class="card" id="user-corner">
           <h2 class="text-center">My corner</h2>
-          <div class="user-corner-content">
-            <div>
-              <h3>My infos</h3>
-              <p>Coach</p>
-              <p>Hunter</p>
-            </div>
-            <div>
-              <h3>My tests</h3>
-            </div>
-          </div>
+        <div class="card" id="user-corner">
+          <%= render "users/user_corner"%>
         </div>
       </div>
       <div class="col-sm-8">
-        <div class="card" id="calendar">
           <h2 class="text-center">Calendar</h2>
+        <div class="card" id="calendar">
           <%= week_calendar number_of_weeks: 2, events: @meetings do |date, meetings| %>
             <div class="date-square">
               <a href="#" class="date-link" data-toggle="modal" data-target="#modal_<%=date.jd%>">
               </a>
-                <div class="number">
-                  <%= date.day%>
+
+                <div class="number text-center">
+                  <div class="special">
+                    <%= date.day%>
+                  </div>
                 </div>
                 <% meetings.each do |meeting| %>
-                  <div class="meeting" style="color:green;">
+                  <!-- <div class="meeting" style="color:green;">
                     <%= meeting.name %>
-                  </div>
+                  </div> -->
                 <% end %>
             </div>
 
+            <!-- Encart meeting -->
 
             <!-- Modal -->
             <div class="modal fade" id="modal_<%=date.jd%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -71,10 +66,36 @@
   </div>
 </div>
 
+
+<!-- <div class="codepen">
+  <div class="row">
+    <%= render "shared/code_pen_calendar"%>
+
+  </div>
+</div> -->
 <% content_for(:after_js) do %>
 <script>
   $(document).ready(function(){
-    $(".today .number").addClass("badge badge-red");
+    // Gestion d'aujourd'hui
+    $(".today .number .special").addClass("badge badge-red");
+
+    // Gestion du hover sur date
+    $( ".date-square" ).hover(function() {
+        $(this).find('.special').addClass('hovered');
+      }, function () {
+        // if ($("#user-corner").css('display')=='none') {
+        //   // tester presence user corner
+        //   $(".card-trip").removeClass("fadded");
+        // }
+        $(this).find('.special').removeClass('hovered');
+      }
+    );
+
+    // Gestion du select
+    $( ".date-square" ).click(function() {
+      $('.special').removeClass('selected');
+      $(this).find('.special').addClass('selected');
+    });
   });
 </script>
 <%end%>

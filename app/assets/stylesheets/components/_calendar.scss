@@ -1,8 +1,42 @@
-.simple-calendar .day {
-  background-color:white;
+
+// General
+
+.simple-calendar {
+  border-radius: 4px;
+  background-color: #ffffff;
+  color: #333333;
+  font-size:14px;
+  padding:5px;
+
+  a {
+    text-decoration:none;
+    color: #FF462B;
+  }
 }
 
 
+.simple-calendar table {
+  border: none;
+}
+// Heading week
+.table > thead > tr > th {
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: normal;
+  text-align:center;
+  padding-bottom: 23px;
+  border:none;
+}
+
+
+
+//
+.number {
+  font-weight:bold;
+}
+
+
+// A modifier
 .simple-calendar td {
     border: 1px solid $gray-lighter;
 }
@@ -21,9 +55,9 @@
   display: flex;
   justify-content: space-around;
   padding: 5px;
-  border: 1px solid $gray-lighter;
-  border-radius: 5px;
-  margin-bottom: 5px;
+  // border: 1px solid $gray-lighter;
+  // border-radius: 5px 5px 0 0;
+  margin-bottom: 22px;
 }
 
 .simple-calendar .today {
@@ -47,6 +81,30 @@
 }
 
 .date-link:hover {
-  // opacity: 0.3;
+
+}
+// gestion des cases
+.simple-calendar td {
+  border:none;
 }
 
+.simple-calendar .day {
+  height:58px;
+}
+// Gestion du special
+
+.special {
+  margin:auto;
+  width:30px;
+}
+.hovered {
+  text-decoration:underline;
+  background-color: #EEEDE9;
+  border-radius: 12px;
+}
+
+.selected {
+  background-color: #F5A1A3!important;
+  color: #ffffff;
+  border-radius:25%;
+}
