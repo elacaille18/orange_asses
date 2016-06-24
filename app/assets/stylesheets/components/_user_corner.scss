@@ -1,0 +1,14 @@
+.coach, .hunter {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+  .position {
+    font-size: 14px;
+    font-style: italic;
+  }
+}
+
+.team-infos {
+  flex: 1 0 auto;
+  margin-left:10px;
+}
