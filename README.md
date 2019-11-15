@@ -3,3 +3,5 @@ Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/ra
 We will have to fix this repository security issues
 
 Another issue to fix
+
+Latence check
